@@ -1,1 +1,0 @@
-# birdadminvue3.github.io
