@@ -32,7 +32,7 @@ BirdAdmin 是基于 `Vue 3.5 + Vite 7 + TypeScript 5.8 + Pinia 3 + Element Plus 
 | --- | --- | --- |
 | 登录 | `/login` | 账号密码登录、大小写锁定提示、暗色主题与语言切换 |
 | 控制台 | `/dashboard` | 登录后的默认首页，`redirect` 指向首个可访问页面 |
-| 系统管理 | `/system/menu`、`/system/role`、`/system/user`、`/system/dept`、`/system/post`、`/system/dict` | 六类资源由同一套 schema 渲染，支持树形表格、分页筛选、CRUD、角色授权与用户分配角色 |
+| 系统管理 | `/system/menu`、`/system/role`<br>`/system/user`、`/system/dept`<br>`/system/post`、`/system/dict` | 六类资源由同一套 schema 渲染，支持树形表格、分页筛选、CRUD、角色授权与用户分配角色 |
 | 异常页面 | `/error/403`、`/error/404`、`/error/500` | 统一 `el-result` 风格，404 兼作路由兜底页面 |
 | 权限管理 | `/permission/page`、`/permission/button` | 切换演示账号观察菜单变化，演示指令 / 组件 / 函数三种按钮鉴权 |
 | 其他 | `/empty`、`/redirect/:path` | 全屏空白页示例、页签刷新中转路由 |

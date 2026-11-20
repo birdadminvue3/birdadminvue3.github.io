@@ -16,8 +16,11 @@ const base = normalizeBase(process.env.DOCS_BASE)
 // 与目标站 https://birdadminvue3.github.io/ 一致的两个社交图标
 const giteeIcon =
   '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.984 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.016 0zm6.09 5.333c.328 0 .593.266.592.593v1.482a.594.594 0 0 1-.593.592H9.777c-.982 0-1.778.796-1.778 1.778v5.63c0 .327.266.592.593.592h5.63c.982 0 1.778-.796 1.778-1.778v-.296a.593.593 0 0 0-.592-.593h-4.15a.592.592 0 0 1-.592-.592v-1.482a.593.593 0 0 1 .593-.592h6.815c.327 0 .593.265.593.592v3.408a4 4 0 0 1-4 4H5.926a.593.593 0 0 1-.593-.593V9.778a4.444 4.444 0 0 1 4.445-4.444h8.296Z"/></svg>'
+// VitePress 强制 .VPSocialLink > svg { fill: currentColor }，会覆盖 SVG 上的
+// fill="none" 表现属性。描边式图标（stroke）会被填成实心色块而看不出形状，
+// 因此这里和内置图标一样使用「填充式单 path」。
 const mailIcon =
-  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>'
+  '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>'
 
 export default defineConfig({
   base,
@@ -58,7 +61,8 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
       { text: '生态与资源', link: '/resources/contact' },
-      { text: 'Gitee 仓库', link: 'https://gitee.com/web_akai/bird-admin' }
+      { text: 'Gitee 仓库', link: 'https://gitee.com/web_akai/bird-admin' },
+      { text: 'GitHub 仓库', link: 'https://github.com/birdadminvue3/bird-admin' }
     ],
 
     sidebar: {
@@ -112,10 +116,16 @@ export default defineConfig({
     },
 
     socialLinks: [
+      // VitePress 内置 github 图标，与自定义 SVG 的 Gitee 图标并列
       {
         icon: { svg: giteeIcon },
         link: 'https://gitee.com/web_akai/bird-admin',
         ariaLabel: 'Gitee 仓库'
+      },
+      {
+        icon: 'github',
+        link: 'https://github.com/birdadminvue3/bird-admin',
+        ariaLabel: 'GitHub 仓库'
       },
       {
         icon: { svg: mailIcon },

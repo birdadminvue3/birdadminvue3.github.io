@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: Gitee 仓库
       link: https://gitee.com/web_akai/bird-admin
+    - theme: alt
+      text: GitHub 仓库
+      link: https://github.com/birdadminvue3/bird-admin
 
 features:
   - icon: ⚡

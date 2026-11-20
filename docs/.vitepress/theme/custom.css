@@ -86,6 +86,26 @@ html.dark .VPHero .VPImage {
   color: var(--vp-c-brand-1);
 }
 
+/* --------------------------------------------------------------------------
+   表格折行
+   VitePress 默认 `.vp-doc table { display: block; overflow-x: auto }`：
+   表格靠横向滚动而不是折行展示，单元格里连写的长路径会把整张表撑宽，
+   最右侧的「说明」列因此被挤出可视区（见 /guide/ 的「界面与模块」表）。
+
+   这里必须用 overflow-wrap: anywhere 而不是 break-word ——
+   前者会同时降低列的 min-content 宽度，auto 布局才能把表格收进容器；
+   后者只影响渲染，min-content 仍按最长不可断字符串计算，问题不会消失。
+   -------------------------------------------------------------------------- */
+.vp-doc table th,
+.vp-doc table td,
+.vp-doc table :not(pre) > code {
+  overflow-wrap: anywhere;
+}
+
+.vp-doc table :not(pre) > code {
+  white-space: normal;
+}
+
 /* 目标站没有这一段，补上是为了尊重系统的减弱动效设置 */
 @media (prefers-reduced-motion: reduce) {
   .VPHomeFeatures .VPFeature {
