@@ -61,8 +61,6 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '指南', link: '/guide/' },
       { text: '生态与资源', link: '/resources/contact' },
-      { text: 'Gitee 仓库', link: 'https://gitee.com/web_akai/bird-admin' },
-      { text: 'GitHub 仓库', link: 'https://github.com/birdadminvue3/bird-admin' }
     ],
 
     sidebar: {
