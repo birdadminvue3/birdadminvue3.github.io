@@ -26,17 +26,17 @@
 
 ## 版权信息
 
-BirdAdmin 遵循 [MIT](https://opensource.org/license/MIT) 开源协议发布，提供无需授权的免费使用。项目包含的第三方源码和二进制文件，其版权信息另行标注。
+BirdAdmin 遵循 [MIT](https://opensource.org/license/MIT) 开源协议发布，提供无需授权即可免费使用。项目仓库根目录已提供 `LICENSE` 文件；项目包含的第三方源码和二进制文件，其版权信息另行标注。
 
 > Copyright (c) 2026 前端很开门。
 
-::: warning
-项目 README 声明 MIT 协议，同时[实现状态与路线图](/guide/roadmap)里注明仓库根目录的 `LICENSE` 文件尚未添加。商用前请以仓库最终补齐的 LICENSE 为准。
+::: tip
+当前版本 **v1.0.0**（2026-11-20），版本内容与后续计划见[贡献与更新日志](/resources/contributing)与[实现状态与路线图](/guide/roadmap)。
 :::
 
 ## 支持项目
 
-无需捐赠。如果觉得项目不错，或者已经在使用了，可以去 [Gitee](https://gitee.com/web_akai/bird-admin.git) 点个 Star，这对作者是很大的鼓励。
+无需捐赠。如果觉得项目不错，或者已经在使用了，可以去 [Gitee](https://gitee.com/web_akai/bird-admin) 或 [GitHub](https://github.com/birdadminvue3/bird-admin) 点个 ⭐ Star，这对作者是很大的鼓励。
 
 ## 免责声明
 
@@ -46,3 +46,4 @@ BirdAdmin 遵循 [MIT](https://opensource.org/license/MIT) 开源协议发布，
 
 - [技术栈与依赖](/guide/tech-stack) —— 这些技术分别用在什么地方
 - [联系与演示](/resources/contact) —— 仓库、邮箱与 QQ 群
+- [贡献与更新日志](/resources/contributing) —— 参与贡献与版本记录

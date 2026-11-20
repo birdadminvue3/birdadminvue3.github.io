@@ -1,6 +1,6 @@
 # 快速开始
 
-这一页讲怎么把 BirdAdmin 前端跑起来。项目本身是纯前端脚手架，开发环境的接口由本地 Mock 提供，不需要准备数据库或后端服务。
+这一页讲怎么把 BirdAdmin 前端跑起来。项目本身是纯前端脚手架，开发环境的接口由本地 Mock 提供，不需要准备数据库或后端服务。当前版本 **v1.0.0**。
 
 ## 环境要求
 
@@ -8,13 +8,33 @@
 | --- | --- |
 | Node.js | `^20.19.0 \|\| >=22.12.0`（见 `package.json` 的 `engines`；Vite 7 不再支持 Node 16 / 18） |
 | 包管理器 | pnpm 10.x |
-| 浏览器 | 支持 `document.startViewTransition` 的浏览器可获得主题切换动画，不支持时自动降级为直接切换 |
+| 浏览器 | Chrome / Edge 88+、Firefox 78+、Safari 14+；不支持 IE |
+
+### 浏览器支持
+
+| 浏览器 | 版本 | 说明 |
+| --- | --- | --- |
+| Chrome / Edge | 88+ | 推荐；主题切换的圆形扩散动画需 111+（`document.startViewTransition`） |
+| Firefox | 78+ | 动画自动降级为直接切换，功能不受影响 |
+| Safari | 14+ | 同上 |
+| IE | 不支持 | 依赖 ES Module 与现代 CSS |
+
+- 采用 Hash 路由（`/#/login`），部署到任意静态服务器都不需要额外配置 history 回退，详见[生产部署](/guide/deployment)。
+- 系统开启「减少动态效果」（`prefers-reduced-motion`）时，主题切换与页面过渡动画会自动关闭。
 
 ## 安装与运行
 
+两个仓库内容完全一致，按访问速度任选其一克隆：
+
+| 平台 | Clone 地址 |
+| --- | --- |
+| Gitee（国内推荐） | `https://gitee.com/web_akai/bird-admin.git` |
+| GitHub | `https://github.com/birdadminvue3/bird-admin.git` |
+
 ```bash
-# 克隆项目
+# 克隆项目（下面二选一）
 git clone https://gitee.com/web_akai/bird-admin.git
+# git clone https://github.com/birdadminvue3/bird-admin.git
 
 # 进入项目
 cd bird-admin
@@ -49,6 +69,18 @@ pnpm run preview
 想临时换端口，用 `pnpm exec vite --port 9095`。`pnpm dev -- --port X` 经 pnpm 转发不会生效。
 :::
 
+## 可用脚本
+
+| 命令 | 作用 |
+| --- | --- |
+| `pnpm dev` | 启动开发服务器，`9094` 端口被占用时自动顺延 |
+| `pnpm build` | 类型检查 + 生产构建，产物输出到 `dist/` |
+| `pnpm preview` | 本地预览 `dist/` 产物 |
+| `pnpm typecheck` | 仅做 `vue-tsc --noEmit` 类型检查 |
+| `pnpm lint` / `pnpm lint:fix` | ESLint 检查 / 自动修复 |
+| `pnpm sync` | 同步推送到 Gitee 与 GitHub，见[多仓库同步](/guide/sync-repos) |
+| `pnpm sync:dry` | 只打印将要执行的 git 命令，不实际推送 |
+
 ## 环境变量
 
 `.env` 放通用值，`.env.development` 与 `.env.production` 按模式覆盖：
@@ -73,16 +105,18 @@ Mock 数据挂在 `globalThis` 的内存单例上，修改种子后 dev server �
 - [请求层](/guide/request) —— 增删一个接口时怎么写
 - [权限体系](/guide/permission) —— 新增一个受权限控制的页面
 - [接入真实后端](/guide/backend) —— 从本地 Mock 切到真实接口
+- [生产部署](/guide/deployment) —— Nginx、子路径与 Docker
+- [多仓库同步](/guide/sync-repos) —— 一次推送到 Gitee 与 GitHub
 
 ## 维护这份文档站点
 
 本站是独立的 VitePress 仓库，与前端项目分开维护：
 
 ```bash
-npm install     # 安装文档站依赖
-npm run dev     # http://localhost:5173/
-npm run build   # 产物在 docs/.vitepress/dist/
-npm run preview
+pnpm install     # 安装文档站依赖
+pnpm run dev     # http://localhost:5173/
+pnpm run build   # 产物在 docs/.vitepress/dist/
+pnpm run preview
 ```
 
 新增页面、链接写法与侧边栏配置见[写作与目录约定](/guide/writing)，发布流程见项目根目录的 `README.md`。

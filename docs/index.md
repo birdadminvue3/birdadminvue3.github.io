@@ -42,7 +42,7 @@ features:
 
 ## 一句话了解
 
-BirdAdmin 是基于 **Vue 3.5 + Vite 7 + TypeScript 5.8 + Pinia 3 + Element Plus + UnoCSS** 的后台管理系统前端，支持按用户权限动态注册路由、按钮级鉴权、三种菜单布局、暗黑主题、多页签与中英切换，遵循 MIT 协议免费商用。
+BirdAdmin 是基于 **Vue 3.5 + Vite 7 + TypeScript 5.8 + Pinia 3 + Element Plus + UnoCSS** 的后台管理系统前端，支持按用户权限动态注册路由、按钮级鉴权、三种菜单布局、暗黑主题、多页签与中英切换，遵循 MIT 协议免费商用。当前版本 **v1.0.0**（2026-11-20）。
 
 > 本仓库目前是**纯前端脚手架**，没有附带后端工程。所有 `/api/*` 接口由 `vite-plugin-fake-server` 在**开发环境**提供本地 Mock，生产构建不会注入任何假数据或演示账号。本文内容以项目仓库的 README 为准。
 
@@ -93,4 +93,7 @@ pnpm run preview
 - [目录结构](/guide/project-structure) —— 快速找到代码应该放在哪里
 - [权限体系](/guide/permission) —— RBAC 模型与新增受控页面的四个步骤
 - [接入真实后端](/guide/backend) —— 从本地 Mock 切到真实接口
+- [生产部署](/guide/deployment) —— Nginx、子路径、Docker 与发布前检查
+- [多仓库同步](/guide/sync-repos) —— 一次推送到 Gitee 与 GitHub
+- [贡献与更新日志](/resources/contributing) —— 参与贡献与版本记录
 - [联系与演示](/resources/contact) —— 演示账号、QQ 群与反馈渠道

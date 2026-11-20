@@ -22,13 +22,17 @@ Vite 7 + TypeScript + ESLint 10，`pnpm build` 先类型检查再打包；产物
 
 **验证情况**
 
-`pnpm lint` 无错误、`pnpm build` 成功；dev 环境已对登录、刷新、22 项只读 / 权限断言与 33 项 CRUD / 授权断言做过接口级验证；生产包已确认无 Mock 凭据与 console 横幅。
+`pnpm lint` 无错误、`pnpm build` 成功；dev 环境已对登录、刷新、22 项只读 / 权限断言与 33 项 CRUD / 授权断言做过接口级验证；页签与权限管理模块改造后已重新执行 lint / build；生产包已确认无 Mock 凭据与 console 横幅。
+
+**文档与许可**
+
+根目录提供 MIT `LICENSE`、完整 README，以及 Gitee / GitHub 双仓库同步脚本，见[多仓库同步](/guide/sync-repos)。当前版本 **v1.0.0**，版本记录见[贡献与更新日志](/resources/contributing)。
 
 ## 尚未实现 / 规划中
 
 - `Node.js` / `Next.js` / `Spring Boot` 或其他真实后端、数据库持久化，以及可视化权限配置（当前权限数据仅在 dev 内存中）。
 - 在线演示站、验证码 / 记住我 / 忘记密码（登录页相关代码已注释保留）、图表大屏（ECharts）、富文本、文件上传等业务模块。
-- 单元测试 / E2E、CI 流水线，以及仓库根目录的 `LICENSE` 文件。
+- 单元测试 / E2E 与 CI 流水线。
 
 ::: warning
 README 里提到的后端技术栈属于规划能力，不是当前仓库的组成部分。现在能跑的是纯前端 + dev 本地 Mock，接真实后端的做法见[接入真实后端](/guide/backend)。

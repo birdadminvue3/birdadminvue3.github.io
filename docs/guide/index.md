@@ -1,6 +1,6 @@
 # 项目介绍
 
-BirdAdmin 是基于 `Vue 3.5 + Vite 7 + TypeScript 5.8 + Pinia 3 + Element Plus + UnoCSS` 的后台管理系统前端，支持按用户权限动态注册路由、按钮级鉴权、三种菜单布局、暗黑主题、多页签与中英切换，遵循 MIT 协议，无需授权即可免费商用。
+BirdAdmin 是基于 `Vue 3.5 + Vite 7 + TypeScript 5.8 + Pinia 3 + Element Plus + UnoCSS` 的后台管理系统前端，支持按用户权限动态注册路由、按钮级鉴权、三种菜单布局、暗黑主题、多页签与中英切换，遵循 MIT 协议，无需授权即可免费商用。当前版本 **v1.0.0**（2026-11-20）。
 
 ## 这是一个纯前端脚手架
 

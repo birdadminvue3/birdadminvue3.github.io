@@ -88,6 +88,8 @@ export default defineConfig({
           text: '进阶与排错',
           items: [
             { text: '接入真实后端', link: '/guide/backend' },
+            { text: '生产部署', link: '/guide/deployment' },
+            { text: '多仓库同步', link: '/guide/sync-repos' },
             { text: '实现状态与路线图', link: '/guide/roadmap' },
             { text: '常见问题与已知限制', link: '/guide/faq' }
           ]
@@ -102,6 +104,7 @@ export default defineConfig({
           text: '生态与资源',
           items: [
             { text: '联系与演示', link: '/resources/contact' },
+            { text: '贡献与更新日志', link: '/resources/contributing' },
             { text: '特别鸣谢与版权', link: '/resources/acknowledgements' }
           ]
         }

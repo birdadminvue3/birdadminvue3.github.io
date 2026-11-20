@@ -35,9 +35,9 @@ pnpm run preview        # 本地预览构建结果
 │   ├── guide/
 │   │   ├── index.md              # 项目介绍
 │   │   ├── features.md           # 主要特性
-│   │   ├── getting-started.md    # 快速开始
+│   │   ├── getting-started.md    # 快速开始（浏览器支持、可用脚本、环境变量）
 │   │   ├── screenshots.md        # 页面预览（登录 / 控制台 / 菜单 / 404）
-│   │   ├── tech-stack.md         # 技术栈与依赖
+│   │   ├── tech-stack.md         # 技术栈与依赖（含精确版本对照）
 │   │   ├── project-structure.md  # 目录结构
 │   │   ├── request.md            # 请求层
 │   │   ├── permission.md         # 权限体系
@@ -45,11 +45,14 @@ pnpm run preview        # 本地预览构建结果
 │   │   ├── configuration.md      # 外观设置与国际化
 │   │   ├── mock-api.md           # Mock 接口清单
 │   │   ├── backend.md            # 接入真实后端
+│   │   ├── deployment.md         # 生产部署（Nginx / 子路径 / Docker）
+│   │   ├── sync-repos.md         # 多仓库同步
 │   │   ├── roadmap.md            # 实现状态与路线图
 │   │   ├── faq.md                # 常见问题与已知限制
 │   │   └── writing.md            # 维护本站的写作约定
 │   └── resources/
 │       ├── contact.md            # 联系与演示
+│       ├── contributing.md       # 贡献指南与更新日志
 │       └── acknowledgements.md   # 特别鸣谢与版权
 ├── DESIGN.md                     # 视觉规范与对齐说明
 ├── package.json
@@ -58,7 +61,7 @@ pnpm run preview        # 本地预览构建结果
 └── README.md
 ```
 
-侧边栏分成「开始使用 / 开发指南 / 进阶与排错 / 维护本站」四组，加上「生态与资源」一组，全部在 `config.mts` 的 `themeConfig.sidebar` 里配置。
+侧边栏分成「开始使用 / 开发指南 / 进阶与排错 / 维护本站」四组，加上「生态与资源」一组，全部在 `config.mts` 的 `themeConfig.sidebar` 里配置。共 21 个 Markdown 页面。
 
 演示截图来自项目仓库 `src/assets/readme/`，共登录、控制台、菜单管理、404 四张，集中展示在站内「页面预览」页，并在项目介绍、快速开始、权限体系、路由章节里就近引用。
 
@@ -71,12 +74,34 @@ pnpm run preview        # 本地预览构建结果
 | 开源协议 | Apache-2.0 | **MIT**（README 徽标与版权信息均为 MIT；页脚已同步） |
 | 后端 | `ThinkPHP8` 等全栈描述 | **纯前端脚手架，没有附带后端工程**，`Node.js` / `Next.js` / `Spring Boot` 属于规划能力 |
 | 接口来源 | 未说明 | 开发环境由 `vite-plugin-fake-server` 提供本地 Mock，生产构建不含 Mock 与演示账号 |
-| 技术栈 | 精确到小版本号 | 采用 README 徽标的大版本（Vue 3.5.x / Vite 7.x / TS 5.8.x / Pinia 3.x / Element Plus 2.10.x） |
+| 技术栈 | 精确到小版本号 | 徽标用大版本描述能力边界，README 技术栈表保留精确版本，站内两者都列出 |
 | 特性说明 | 概述性文案 | 按 README 展开为 RBAC、请求层、多页签、国际化、设置持久化等可核对的细节 |
+| 许可文件 | 未提及 | 根目录已提供 MIT `LICENSE`，当前版本 v1.0.0 |
 
-同时按 README 补齐了演示账号表、环境变量表、`requestOptions` 表、完整 Mock 接口清单与业务码、目录树与路径别名、实现状态与路线图、常见问题、QQ 群与官方邮箱、鸣谢与版权信息。
+同时按 README 补齐了演示账号表、浏览器支持表、环境变量表、可用脚本表、`requestOptions` 表、完整 Mock 接口清单与业务码、目录树与路径别名、生产部署与多仓库同步、实现状态与路线图、常见问题、贡献指南、更新日志、QQ 群与官方邮箱、鸣谢与版权信息。
 
-> 版本、路线与版权以项目仓库为准。README 声明 MIT 协议，同时注明根目录 `LICENSE` 文件尚未补齐，商用前请留意这一点。
+> 版本、路线与版权以项目仓库为准。README 声明 MIT 协议且根目录已提供 `LICENSE` 文件；商用前仍建议自行核对许可条款。
+
+## 与项目 README 的章节对照
+
+项目 README 更新后，按这张表定位需要同步的页面，避免漏补章节。
+
+| 项目 README 章节 | 本站页面 |
+| --- | --- |
+| 介绍 / 主要特性 | `guide/index.md`、`guide/features.md` |
+| 技术栈 | `guide/tech-stack.md` |
+| 项目预览（功能模块、演示账号） | `guide/screenshots.md`、`resources/contact.md` |
+| 安装使用（脚本、环境变量） / 浏览器支持 | `guide/getting-started.md` |
+| 开发指南 · 目录结构 | `guide/project-structure.md` |
+| 开发指南 · 请求层 | `guide/request.md` |
+| 开发指南 · 权限体系与新增页面 | `guide/permission.md`、`guide/routing.md` |
+| 开发指南 · Mock 接口清单 | `guide/mock-api.md` |
+| 开发指南 · 外观设置与国际化 | `guide/configuration.md` |
+| 多仓库同步 | `guide/sync-repos.md` |
+| 接入真实后端 / 生产部署 | `guide/backend.md`、`guide/deployment.md` |
+| 实现状态与路线图 / 常见问题 | `guide/roadmap.md`、`guide/faq.md` |
+| 贡献指南 / 更新日志 | `resources/contributing.md` |
+| 联系我们 / 特别鸣谢 / 版权 / 支持 / 免责声明 | `resources/contact.md`、`resources/acknowledgements.md` |
 
 ## 换成自己的内容
 
@@ -133,4 +158,4 @@ pnpm run preview        # 本地预览构建结果
 - **构建报死链**：按报错给出的文件路径修正链接，站内链接写 `/guide/xxx` 这种不带后缀的绝对路径。
 - **「最后更新于」不显示**：`config.mts` 里的 `lastUpdated` 默认关闭，等仓库有了提交记录再打开。
 - **想开 `cleanUrls`**：先确认托管平台支持无后缀路径刷新，GitHub Pages 下容易 404，模板保持关闭。
-- **文档和项目对不上**：优先以 bird-admin 仓库的 README 与 `package.json` 为准，再回来改 `docs/`，不要以目标站的旧文案为准。
+- **文档和项目对不上**：按上面的「与项目 README 的章节对照」表定位来源，优先以 bird-admin 仓库的 README 与 `package.json` 为准，再回来改 `docs/`，不要以目标站的旧文案为准。

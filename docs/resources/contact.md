@@ -22,6 +22,7 @@
 ## 项目渠道
 
 - [Gitee 仓库：web_akai/bird-admin](https://gitee.com/web_akai/bird-admin)
+- [GitHub 仓库：birdadminvue3/bird-admin](https://github.com/birdadminvue3/bird-admin)
 - [官方邮箱：web_bird@qq.com](mailto:web_bird@qq.com)（导航栏右上角的信封图标可直接唤起邮件客户端）
 - 学习交流 QQ 群：**829514092**（[入群链接](https://qm.qq.com/cgi-bin/qm/qr?k=mtO25dYqAb6TvQabT3a32GpM-ymBgzyQ&jump_from=webapi&authKey=IdNeGCdGWY3agi7eUniBkHG7ME98B3hD2dBUFoLcBLtYrKEl1RfComEn+0sdrM+I)）
 

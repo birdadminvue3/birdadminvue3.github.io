@@ -11,6 +11,25 @@
 
 Vite 7 已经不再支持 Node 16 / 18，看到旧资料里写「Node 16+」时请以这里的 `engines` 为准。
 
+## 精确版本对照
+
+上面各表用徽标里的大版本描述能力边界；README 的「技术栈」表给出了 `package.json` 实际锁定的精确版本，需要核对依赖升级时以这张表为准。
+
+| 分类 | 依赖 | 版本 | 用途 |
+| --- | --- | --- | --- |
+| 框架 | vue | 3.5.18 | `<script setup>` 组合式 API |
+| 路由 | vue-router | 4.5.1 | Hash 模式，登录后 `addRoute` 注入动态路由 |
+| 状态 | pinia | 3.0.3 | app / settings / user / permission / tags-view |
+| 构建 | vite | 7.1.2 | 配置拆分为 resolve / plugin / server / build |
+| 语言 | typescript | 5.8.3 | `vue-tsc --noEmit` 严格类型检查 |
+| UI | element-plus | 2.10.7 | 按需自动导入，暗色走 CSS 变量 |
+| 样式 | unocss / sass-embedded | 66.5.0 / 1.90.0 | 原子类 + 局部 SCSS |
+| 国际化 | vue-i18n | 11.1.11 | `legacy: false` 组合式 API |
+| 请求 | axios | 1.11.0 | 拦截器、重试、取消、离线队列 |
+| 工具 | @vueuse/core / dayjs | 13.7.0 / 1.11.13 | 响应式工具与时间格式化 |
+| Mock | vite-plugin-fake-server | 2.2.0 | 仅开发环境生效，构建时移除 |
+| 规范 | eslint | 10.15.0 | flat config + vue / typescript 插件 |
+
 ## 框架与构建
 
 | 技术 | 版本 | 用途 |

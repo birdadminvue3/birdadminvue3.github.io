@@ -1,6 +1,6 @@
 # 常见问题与已知限制
 
-上手时最常遇到的几个问题，以及当前实现里需要提前知道的边界。
+上手时最常遇到的问题，以及当前实现里需要提前知道的边界。排查表与项目 README 的「常见问题与已知限制」保持一致。
 
 ## 常见排查
 
@@ -12,6 +12,10 @@
 | 想换 dev 端口？ | 用 `pnpm exec vite --port 9095`；`pnpm dev -- --port X` 经 pnpm 转发不会生效。端口被占用时 Vite 会自动顺延。 |
 | 主题切换没有动画？ | 圆形扩散依赖 `document.startViewTransition`，不支持的浏览器或开启「减少动态效果」时自动降级为直接切换。 |
 | 语言切换后菜单没翻译？ | 检查 `src/locales/modules/*.ts` 的 `menus` 下是否有对应中文原文词条；未登记时会回退显示中文。 |
+| 改了角色权限，页面没变化？ | 动态路由只在登录与刷新时通过 `/auth/routes` 拉取，改完权限需退出重登或刷新页面才会生效。 |
+| 页签 / 布局错乱，想恢复默认？ | 清除 `localStorage` 中的 `bird-setting-*`、`bird-tags-views`、`bird-tags-cache` 后刷新；或在设置抽屉点「恢复默认」。 |
+| 部署后直接访问子路由 404？ | 当前为 hash 路由，地址形如 `/#/system/menu`，服务器 root 指向 `dist/` 即可；若改成 history 模式，需要额外配置 `try_files` 回退到 `index.html`。见[生产部署](/guide/deployment)。 |
+| 换了主题色，部分地方还是蓝色？ | 这些位置大概率写死了色值，改成 `var(--el-color-primary)` 或 `var(--el-color-primary-light-N)` 即可跟随主题。 |
 | Node 版本不兼容？ | Vite 7 要求 `^20.19.0 \|\| >=22.12.0`，旧资料里的 Node 16 / 18 已不适用，见[快速开始](/guide/getting-started)。 |
 
 ## 已知限制
@@ -28,12 +32,13 @@
 
 项目暂无在线演示站，也没有附带后端；演示账号仅 dev 有效，生产构建不含 Mock 凭据。见[联系与演示](/resources/contact)与[实现状态与路线图](/guide/roadmap)。
 
-**协议文件待补齐**
+**MIT 协议与许可文件**
 
-README 声明遵循 MIT 协议，但路线图里也注明仓库根目录的 `LICENSE` 文件尚未添加。商用前请以仓库最终补齐的 LICENSE 为准，见[特别鸣谢与版权](/resources/acknowledgements)。
+项目仓库根目录已提供 MIT `LICENSE` 文件，README 与版本徽标均声明 MIT 协议，无需授权即可免费商用。第三方源码与二进制文件的版权信息另行标注，见[特别鸣谢与版权](/resources/acknowledgements)。
 
 ## 相关页面
 
 - [Mock 接口清单](/guide/mock-api) —— 接口路径、分页参数与业务码
 - [请求层](/guide/request) —— 401 刷新、重放与错误处理
 - [路由与多页签](/guide/routing) —— 守卫与 hash 路由兜底
+- [生产部署](/guide/deployment) —— Nginx、子路径与发布前检查
