@@ -1,0 +1,72 @@
+name: 部署文档到 GitHub Pages
+
+# 前置条件（只需做一次）：仓库 Settings → Pages → Build and deployment → Source 选「GitHub Actions」。
+# configure-pages 的 enablement 默认为 false，工作流本身不会自动改这个仓库设置。
+
+on:
+  # 推送到 main 分支时自动构建并发布
+  push:
+    branches: [main]
+  # 也允许在 Actions 页面手动触发一次
+  workflow_dispatch:
+
+# deploy-pages 需要这三个权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一次发布，排队而不是互相覆盖
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+        with:
+          # 读取完整提交历史，之后打开「最后更新于」时不需要再改这里
+          fetch-depth: 0
+
+      # 版本读取 package.json 的 packageManager 字段，保证 CI 与本地一致
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          # cache: pnpm 依赖上面的 pnpm/action-setup，顺序不能颠倒
+          cache: pnpm
+
+      - name: 安装依赖
+        # 锁文件必须提交；--frozen-lockfile 让 CI 严格复现依赖，版本漂移宁可报错也不要静默发生
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建站点
+        env:
+          # 普通仓库发布在 /<仓库名>/ 下；用户名.github.io 这类主页仓库发布在根路径
+          DOCS_BASE: "${{ endsWith(github.event.repository.name, '.github.io') && '/' || format('/{0}/', github.event.repository.name) }}"
+        run: pnpm run build
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传构建产物
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

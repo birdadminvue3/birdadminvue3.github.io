@@ -1,0 +1,98 @@
+@import './tokens.css';
+
+/* ==========================================================================
+   BirdAdmin 文档站主题样式
+   对齐目标：https://birdadminvue3.github.io/ （同为 VitePress 1.6.4）
+   以下品牌色、渐变、卡片与排版数值直接取自该站构建产出的 style.css，
+   只在末尾补充了减弱动效分支。逐项依据见项目根目录 DESIGN.md。
+   ========================================================================== */
+
+html:root {
+  --vp-c-brand-1: #2b7de0;
+  --vp-c-brand-2: #439efd;
+  --vp-c-brand-3: #6fb6ff;
+  --vp-c-brand-soft: rgba(67, 158, 253, 0.14);
+
+  /* 首页主标题：蓝到橙的渐变文字；右侧 logo 背后的光晕 */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: linear-gradient(120deg, #2c3e50 0%, #439efd 58%, #f0803c 100%);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #439efd 25%, #8fc4ff 55%, #f0803c 90%);
+  --vp-home-hero-image-filter: blur(48px);
+
+  --vp-c-tip-1: #2b7de0;
+  --vp-c-tip-2: rgba(67, 158, 253, 0.12);
+  --vp-c-tip-3: rgba(67, 158, 253, 0.24);
+
+  --vp-button-brand-border: #2b7de0;
+  --vp-button-brand-text: #ffffff;
+  --vp-button-brand-bg: #2b7de0;
+  --vp-button-brand-hover-border: #1f6ac7;
+  --vp-button-brand-hover-text: #ffffff;
+  --vp-button-brand-hover-bg: #1f6ac7;
+  --vp-button-brand-active-border: #1f6ac7;
+  --vp-button-brand-active-text: #ffffff;
+  --vp-button-brand-active-bg: #1f6ac7;
+}
+
+html.dark {
+  --vp-c-brand-1: #8cc2ff;
+  --vp-c-brand-2: #439efd;
+  --vp-c-brand-3: #2b7de0;
+  --vp-c-brand-soft: rgba(67, 158, 253, 0.16);
+  --vp-home-hero-name-background: linear-gradient(120deg, #b9dcff 0%, #439efd 58%, #ffb07a 100%);
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, #1c5fb5 25%, #439efd 55%, #b95b22 90%);
+}
+
+.VPHero .VPImage {
+  border-radius: 28px;
+  box-shadow: 0 18px 45px #2c3e502e;
+}
+
+html.dark .VPHero .VPImage {
+  box-shadow: 0 18px 45px #00000073;
+}
+
+.VPHomeFeatures .VPFeature {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.VPHomeFeatures .VPFeature:hover {
+  transform: translateY(-3px);
+  border-color: var(--vp-c-brand-2);
+  box-shadow: 0 10px 28px #439efd24;
+}
+
+/* 首页正文比普通文档页宽，用来承载介绍、代码块和表格 */
+.VPHome .vp-doc.container {
+  max-width: 960px;
+}
+
+.vp-doc h2 {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 28px;
+  margin-top: 40px;
+}
+
+.VPSidebarItem.level-0 > .item > .text {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+::selection {
+  background: #439efd47;
+}
+
+.vp-doc :not(pre) > code {
+  color: var(--vp-c-brand-1);
+}
+
+/* 目标站没有这一段，补上是为了尊重系统的减弱动效设置 */
+@media (prefers-reduced-motion: reduce) {
+  .VPHomeFeatures .VPFeature {
+    transition: none;
+  }
+
+  .VPHomeFeatures .VPFeature:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,3 @@
+# pnpm 默认拦截依赖的构建脚本；esbuild 需要放行，否则 CI 全新安装时可能缺平台二进制。
+allowBuilds:
+  esbuild: true
